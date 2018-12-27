@@ -1,0 +1,327 @@
+
+:root
+{
+	/*****Colors******/	
+		--themeA1:#222;
+		--themeA2:orange;
+		--themeAbackground:white;
+		--themeAxhover:red;
+	/***********/
+}
+
+/*********The showLine*********/
+
+section.showline
+{
+font-size:small;
+color:var(--themeA1);
+position:absolute;
+left:50%;
+top:50%;
+transform-origin:top left;
+transform:scale(1) translateX(-50%) translateY(-50%);
+border-radius:.5em;
+overflow:hidden;
+border:1px solid var(--themeA2);
+font-family:arial;
+animation-name:showlineentrance;
+animation-duration:500ms;
+width:calc(17 * 2em);
+z-index:20;
+background-color:var(--themeAbackground);
+}
+
+@media (max-width:600px)
+{
+	section.showline
+	{
+		width:100%;
+	}
+}
+section.showline.sneaky
+{
+animation-name:showlineentrancefromup;
+animation-duration:5s;
+top:0em;
+transform:translateX(-50%) translateY(-100%);
+border-top-left-radius:0;
+border-top-right-radius:0;
+}
+
+@keyframes showlineentrancefromup
+{
+	10%,
+	90%	
+	{
+		transform:translateX(-50%) translateY(0);	
+	}
+	100%
+	{
+		transform:translateX(-50%) translateY(-100%);		
+	}
+}
+
+section.showline.leave
+{
+animation-name:showlineleave;
+animation-duration:500ms;
+}
+section.showline.sneaky.leave
+{
+animation:none;
+}
+
+body.showline-curtains::after
+{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+z-index:20000;
+left:0;
+top:0;
+background-color:white;
+opacity:.8;
+transform-origin:center;
+animation:bodycurtains 250ms;
+}
+
+@keyframes bodycurtains
+{
+	from
+	{
+		transform:scale(0);
+	}
+}
+
+@keyframes showlineleave
+{
+	to
+	{
+		opacity:0;	
+		transform:scale(.5) translateX(-50%) translateY(-50%);
+	}
+}
+
+@keyframes showlineentrance
+{
+	from
+	{
+		transform:scale(.5) translateX(-50%) translateY(-50%);
+		opacity:0;
+	}
+	to
+	{
+		opacity:1;	
+	}
+}
+
+section.showline.fixed
+{
+position:fixed;
+}
+
+section.showline > aside.header
+{
+height:2em;
+line-height:2em;
+background-color:var(--themeAheader);
+padding-left:2em;
+text-transform:uppercase;
+}
+
+section.showline > aside.header > .title
+{
+	font-size: 0.85em;
+}
+
+section.showline > aside.header
+{
+}
+
+section.showline.sneaky > aside.header
+{
+}
+
+section.showline > aside.header > span.x
+{
+float:right;
+line-height:2em;
+cursor:pointer;
+display:none;
+}
+
+section.showline.bt > aside.header > span.x,
+section.showline.bts > aside.header > span.x
+{
+display:block;
+}
+
+section.showline > aside.header > span.x:hover
+{
+color:var(--themeAxhover);
+}
+
+section.showline > aside.footer
+{
+background-color:;
+padding:2em 0;
+padding-bottom:0;
+overflow:hidden;
+text-align:center;
+}
+
+section.showline.timing > aside.footer
+{
+transform:scaleX(0);
+animation-name:showlinehorizontalgrow;
+animation-duration:5s;
+animation-fill-mode:forwards;
+padding:0;
+height:.25em;
+}
+
+section.showline.timing
+{
+border-radius:0;
+}
+
+@keyframes showlinehorizontalgrow
+{
+	to
+	{
+		transform:scaleX(1);		
+	}
+}
+
+section.showline.bts > aside.footer,
+section.showline.bt > aside.footer
+{
+padding:2em calc(3 * 2em);
+}
+
+section.showline > article.middle-content
+{
+padding:2em calc(2 * 2em);
+background-color:white;
+overflow:hidden;
+}
+
+section.showline > article.middle-content > aside.icon
+{
+width:calc(2 * 2em);
+height:calc(2 * 2em);
+margin-right:2em;
+float:left;
+}
+
+section.showline > article.middle-content > article.middle
+{
+float:left;
+width:calc(100% - (2 * 2em + 2em));
+}
+
+@media (max-width:600px)
+{
+}
+
+section.showline.sneaky > article.middle-content > article.middle
+{
+}
+section.showline.sneaky > article.middle-content > article.middle > span
+{
+font-size:1.3em;
+}
+
+section.showline > aside.footer > div.bt
+{
+width:calc(5 * 2em);
+color:white;
+background-color:var(--themeA1bt);
+transform-origin:center;
+transform:scale(1);
+transition:background-color 250ms;
+border-radius:.5em;
+text-align:center;
+height:2em;
+line-height:2em; /*Good manner to vertical align a inline(non-block) with an oneline enclosing content*/
+cursor:pointer;
+display:none;
+}
+
+section.showline.bts > aside.footer > div.bt
+{
+display:block;
+text-transform:uppercase;
+}
+
+
+section.showline > aside.footer > div.bt:hover
+{
+background-color:var(--themeA1bthover);
+}
+
+section.showline > aside.footer > div.bt-left
+{
+float:left;
+}
+
+section.showline.bt > aside.footer > div.bt-left
+{
+display:inline-block;
+float:none;
+}
+
+section.showline > aside.footer > div.bt-left::before
+{
+	content:"OK";
+	font-size: 0.8em;
+}
+section.showline > aside.footer > div.bt-right
+{
+float:right;
+}
+
+section.showline > aside.footer > div.bt-right::before
+{
+	content:"Cancelar";
+	font-size: 0.8em;
+}
+
+/************************************/
+
+section.showline.font-awesome > article.middle-content > aside.icon
+{
+-moz-osx-font-smoothing: grayscale;
+-webkit-font-smoothing: antialiased;
+display: inline-block;
+font-style: normal;
+font-variant: normal;
+text-rendering: auto;
+line-height: 1;
+font-family: 'Font Awesome 5 Free';
+color:brown;
+}
+
+section.showline.font-awesome.brands > article.middle-content > aside.icon
+{
+font-family: 'Font Awesome 5 Brands';
+}
+
+section.showline.font-awesome > article.middle-content > aside.icon::before
+{
+content:"\f39a";
+font-size:;
+}
+
+section.showline.question-mark > article.middle-content > aside.icon
+{
+color:orange;
+}
+
+section.showline.question-mark > article.middle-content > aside.icon::before
+{
+content: "\f059"
+}
+
+/************************************/
