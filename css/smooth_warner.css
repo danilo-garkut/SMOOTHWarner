@@ -6,12 +6,16 @@
 		--themeA2:orange;
 		--themeAbackground:white;
 		--themeAxhover:red;
+		--themeAfooterbackground:#aaa;
+		--themeAheader:#eee;
+		--themeA1bt:Purple;
+		--themeA1bthover:#222;
 	/***********/
 }
 
-/*********The showLine*********/
+/*********The smooth-warner*********/
 
-section.showline
+section.smooth-warner
 {
 font-size:small;
 color:var(--themeA1);
@@ -24,7 +28,7 @@ border-radius:.5em;
 overflow:hidden;
 border:1px solid var(--themeA2);
 font-family:arial;
-animation-name:showlineentrance;
+animation-name:smooth-warnerentrance;
 animation-duration:500ms;
 width:calc(17 * 2em);
 z-index:20;
@@ -33,14 +37,14 @@ background-color:var(--themeAbackground);
 
 @media (max-width:600px)
 {
-	section.showline
+	section.smooth-warner
 	{
 		width:100%;
 	}
 }
-section.showline.sneaky
+section.smooth-warner.sneaky
 {
-animation-name:showlineentrancefromup;
+animation-name:entrancefromup;
 animation-duration:5s;
 top:0em;
 transform:translateX(-50%) translateY(-100%);
@@ -48,7 +52,7 @@ border-top-left-radius:0;
 border-top-right-radius:0;
 }
 
-@keyframes showlineentrancefromup
+@keyframes entrancefromup
 {
 	10%,
 	90%	
@@ -61,17 +65,17 @@ border-top-right-radius:0;
 	}
 }
 
-section.showline.leave
+section.smooth-warner.leave
 {
-animation-name:showlineleave;
-animation-duration:500ms;
+animation-name:leave;
+animation-duration:600ms;
 }
-section.showline.sneaky.leave
+section.smooth-warner.sneaky.leave
 {
 animation:none;
 }
 
-body.showline-curtains::after
+body.curtains::after
 {
 content:"";
 position:fixed;
@@ -94,7 +98,7 @@ animation:bodycurtains 250ms;
 	}
 }
 
-@keyframes showlineleave
+@keyframes leave
 {
 	to
 	{
@@ -103,7 +107,7 @@ animation:bodycurtains 250ms;
 	}
 }
 
-@keyframes showlineentrance
+@keyframes smooth-warnerentrance
 {
 	from
 	{
@@ -116,12 +120,12 @@ animation:bodycurtains 250ms;
 	}
 }
 
-section.showline.fixed
+section.smooth-warner.fixed
 {
 position:fixed;
 }
 
-section.showline > aside.header
+section.smooth-warner > aside.header
 {
 height:2em;
 line-height:2em;
@@ -130,63 +134,64 @@ padding-left:2em;
 text-transform:uppercase;
 }
 
-section.showline > aside.header > .title
+section.smooth-warner > aside.header > .title
 {
 	font-size: 0.85em;
 }
 
-section.showline > aside.header
+section.smooth-warner > aside.header
 {
 }
 
-section.showline.sneaky > aside.header
+section.smooth-warner.sneaky > aside.header
 {
 }
 
-section.showline > aside.header > span.x
+section.smooth-warner > aside.header > span.x
 {
 float:right;
 line-height:2em;
 cursor:pointer;
 display:none;
+margin-right:2em;
 }
 
-section.showline.bt > aside.header > span.x,
-section.showline.bts > aside.header > span.x
+section.smooth-warner.bt > aside.header > span.x,
+section.smooth-warner.bts > aside.header > span.x
 {
 display:block;
 }
 
-section.showline > aside.header > span.x:hover
+section.smooth-warner > aside.header > span.x:hover
 {
 color:var(--themeAxhover);
 }
 
-section.showline > aside.footer
+section.smooth-warner > aside.footer
 {
-background-color:;
+background-color:var(--themeAfooterbackground);
 padding:2em 0;
 padding-bottom:0;
 overflow:hidden;
 text-align:center;
 }
 
-section.showline.timing > aside.footer
+section.smooth-warner.timing > aside.footer
 {
 transform:scaleX(0);
-animation-name:showlinehorizontalgrow;
+animation-name:horizontalgrow;
 animation-duration:5s;
 animation-fill-mode:forwards;
 padding:0;
 height:.25em;
 }
 
-section.showline.timing
+section.smooth-warner.timing
 {
 border-radius:0;
 }
 
-@keyframes showlinehorizontalgrow
+@keyframes horizontalgrow
 {
 	to
 	{
@@ -194,20 +199,20 @@ border-radius:0;
 	}
 }
 
-section.showline.bts > aside.footer,
-section.showline.bt > aside.footer
+section.smooth-warner.bts > aside.footer,
+section.smooth-warner.bt > aside.footer
 {
 padding:2em calc(3 * 2em);
 }
 
-section.showline > article.middle-content
+section.smooth-warner > article.middle-content
 {
 padding:2em calc(2 * 2em);
 background-color:white;
 overflow:hidden;
 }
 
-section.showline > article.middle-content > aside.icon
+section.smooth-warner > article.middle-content > aside.icon
 {
 width:calc(2 * 2em);
 height:calc(2 * 2em);
@@ -215,7 +220,7 @@ margin-right:2em;
 float:left;
 }
 
-section.showline > article.middle-content > article.middle
+section.smooth-warner > article.middle-content > article.middle
 {
 float:left;
 width:calc(100% - (2 * 2em + 2em));
@@ -225,15 +230,15 @@ width:calc(100% - (2 * 2em + 2em));
 {
 }
 
-section.showline.sneaky > article.middle-content > article.middle
+section.smooth-warner.sneaky > article.middle-content > article.middle
 {
 }
-section.showline.sneaky > article.middle-content > article.middle > span
+section.smooth-warner.sneaky > article.middle-content > article.middle > span
 {
 font-size:1.3em;
 }
 
-section.showline > aside.footer > div.bt
+section.smooth-warner > aside.footer > div.bt
 {
 width:calc(5 * 2em);
 color:white;
@@ -249,48 +254,66 @@ cursor:pointer;
 display:none;
 }
 
-section.showline.bts > aside.footer > div.bt
+section.smooth-warner.bts > aside.footer > div.bt
 {
 display:block;
 text-transform:uppercase;
 }
 
 
-section.showline > aside.footer > div.bt:hover
+section.smooth-warner > aside.footer > div.bt:hover
 {
 background-color:var(--themeA1bthover);
 }
 
-section.showline > aside.footer > div.bt-left
+section.smooth-warner > aside.footer > div.bt-left
 {
 float:left;
 }
 
-section.showline.bt > aside.footer > div.bt-left
+section.smooth-warner.bt > aside.footer > div.bt-left
 {
 display:inline-block;
 float:none;
 }
 
-section.showline > aside.footer > div.bt-left::before
+section.smooth-warner > aside.footer > div.bt-left::before
 {
-	content:"OK";
+	content:"OK or maybe a YES";
 	font-size: 0.8em;
 }
-section.showline > aside.footer > div.bt-right
+
+/* HERE
+ * Here an example of customization
+ *
+ *	on smoothWarner pack parameter you can pass whatever class name you can contrive in extra_class
+ *	for instance, extra_class:["onlyok"]
+ *	then, here you could write:
+ *
+ *  section.smooth-warner.onlyok > aside.footer > div.bt-left::before
+ *	{
+ *		content:"OK";
+ *	}
+ *
+ *	With similiar approach as above, you can custom everything, create, invent
+ *
+ *
+ * */
+
+section.smooth-warner > aside.footer > div.bt-right
 {
 float:right;
 }
 
-section.showline > aside.footer > div.bt-right::before
+section.smooth-warner > aside.footer > div.bt-right::before
 {
-	content:"Cancelar";
+	content:"Never mind or No";
 	font-size: 0.8em;
 }
 
 /************************************/
 
-section.showline.font-awesome > article.middle-content > aside.icon
+section.smooth-warner.font-awesome > article.middle-content > aside.icon
 {
 -moz-osx-font-smoothing: grayscale;
 -webkit-font-smoothing: antialiased;
@@ -303,23 +326,22 @@ font-family: 'Font Awesome 5 Free';
 color:brown;
 }
 
-section.showline.font-awesome.brands > article.middle-content > aside.icon
+section.smooth-warner.font-awesome.brands > article.middle-content > aside.icon
 {
 font-family: 'Font Awesome 5 Brands';
 }
 
-section.showline.font-awesome > article.middle-content > aside.icon::before
+section.smooth-warner.font-awesome > article.middle-content > aside.icon::before
 {
 content:"\f39a";
-font-size:;
 }
 
-section.showline.question-mark > article.middle-content > aside.icon
+section.smooth-warner.question-mark > article.middle-content > aside.icon
 {
 color:orange;
 }
 
-section.showline.question-mark > article.middle-content > aside.icon::before
+section.smooth-warner.question-mark > article.middle-content > aside.icon::before
 {
 content: "\f059"
 }

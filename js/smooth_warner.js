@@ -1,6 +1,6 @@
 
 /*	Smooth Warner definition
-	config:
+	pack:
 	{
 		msg:"Hello how are you?",
 		title:"Title here",
@@ -22,7 +22,31 @@
 function smoothWarner(pack)
 {
 	var config = pack || {};
-	var smooth_warner_el = null; //Here we take the structure, please look the commit ahead
+	//Here we take the structure
+	var smooth_warner_el = 
+		(
+			function (ev)
+			{
+				var upholstery = document.querySelector ("#" + (pack.upholstery || "the-smooth-warner"));
+				if (!!upholstery === true)
+				{
+					return upholstery;
+				}
+				return {
+					cloneNode:function (ev)
+					{
+						return false;
+					}
+				}
+			}
+		)().cloneNode(true);
+
+	if (smooth_warner_el === false)		
+	{
+		console.log("Could not find the upholstery.html content somewhere, are you passing the correct id?");
+		return;
+	}
+		 
 	var classes = config.extra_classes || [];
 	
 	classManager(smooth_warner_el, classes);
@@ -41,15 +65,11 @@ function smoothWarner(pack)
 	var header = smooth_warner_el.getElementsByClassName("header")[0];
 	var title_el = header.getElementsByClassName("title")[0];
 	var x = smooth_warner_el.getElementsByClassName("x")[0];
-	x.appendChild
-	(
-		document.getElementById("if_SVGS")
-		.getElementsByClassName("close")[0].cloneNode(true)
-	);
 	x.click_response = false;
 	x.addEventListener("click", callback);
 
 	msg_el.innerHTML = config.msg || "";
+
 	title_el.innerHTML = 
 		(
 			function ()
